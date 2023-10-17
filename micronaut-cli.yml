@@ -1,0 +1,6 @@
+applicationType: default
+defaultPackage: ma.answer
+testFramework: junit
+sourceLanguage: java
+buildTool: maven
+features: [app-name, data, data-jpa, email-javamail, email-template, hibernate-jpa, http-client, jackson-databind, java, java-application, jdbc-hikari, junit, kafka, liquibase, logback, maven, mysql, netty-server, openapi, readme, security, security-annotations, shade, swagger-ui, test-resources, views-velocity, yaml]

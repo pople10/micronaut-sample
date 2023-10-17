@@ -1,0 +1,106 @@
+micronaut:
+  ssl:
+    enabled: false
+    keyStore:
+      path: classpath:bootsecurity.p12
+      password: 123456
+      type: PKCS12
+  server:
+    cors:
+      enabled: true
+  application:
+    name: sample Backend
+  router:
+    static-resources:
+      swagger:
+        paths: classpath:META-INF/swagger
+        mapping: /swagger/**
+      swagger-ui:
+        paths: classpath:META-INF/swagger/views/swagger-ui
+        mapping: /swagger-ui/**
+  security:
+    endpoints:
+      logout:
+        enabled: true
+        path: /logout
+    intercept-url-map:
+    - access: isAnonymous()
+      pattern: /swagger/**
+    - access: isAnonymous()
+      pattern: /swagger-ui/**
+    - pattern: /api/**
+      access: isAuthenticated()
+    - pattern: /api/user/**
+      access:
+        - ADMIN
+    - pattern: /api/audit/**
+      access:
+        - ADMIN
+    - pattern: /api/subscription/admin/**
+      access:
+        - ADMIN
+    - pattern: /api/ws/**
+      access: isAnonymous()
+    - pattern: /**
+      access: isAnonymous()
+    authentication: bearer
+    token:
+      jwt:
+        signatures:
+          secret:
+            generator:
+              secret: '"${JWT_SECRET:KindlyPutWhateverYouWantHereIamMohammedAmineAYACHE}"'
+        generator:
+          access-token:
+            expiration: 86400
+  views:
+    velocity:
+      enabled: true
+datasources:
+  default:
+    url: jdbc:mysql://localhost:3306/${DB_NAME:recorder}
+    driverClassName: com.mysql.cj.jdbc.Driver
+    db-type: mysql
+    schema-generate: update
+    dialect: MySQL8Dialect
+    password: ${DB_PASS:}
+    username: ${DB_USER:root}
+
+jpa.default.properties.hibernate.hbm2ddl.auto: none
+jpa.default.properties.hibernate.hbm2ddl.show_sql: false
+jpa.default.properties.hibernate.hbm2ddl.format_sql: false
+jpa:
+  default:
+    entity-scan:
+      packages: com.sample.repositories.entities
+netty:
+  default:
+    allocator:
+      max-order: 3
+liquibase:
+  datasources:
+    default:
+      change-log: 'classpath:db/liquibase-changelog.xml'
+      drop-first: false
+jackson:
+  serialization-inclusion: always
+javamail:
+  authentication:
+    username: 'no-reply@sample.live'
+    password: 'AVosSysT2S}T'
+    enabled: true
+mail:
+  transport:
+    protocol: 'smtp'
+  host: 'mail.privateemail.com'
+  port: 465
+  auth: true
+  ssl: true
+  debug: false
+logging:
+  level:
+    org:
+      hibernate:
+        type:
+          descriptor:
+            sql: trace

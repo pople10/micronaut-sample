@@ -1,0 +1,1 @@
+INSERT INTO role(id,code) VALUES (1,'ADMIN'),(2,'USER');

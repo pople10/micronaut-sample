@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.14.xsd">
+    <changeSet author="amine" id="CREATE_TABLE_USER_ROLE"
+               runOnChange="true">
+        <createTable tableName="USER_ROLE">
+            <column autoIncrement="true" name="ID" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="PK_USER"/>
+            </column>
+            <column name="USER_ID" type="BIGINT"/>
+            <column name="ROLE_ID" type="BIGINT"/>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

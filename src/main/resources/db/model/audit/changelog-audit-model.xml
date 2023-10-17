@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.14.xsd">
+    <changeSet author="amine" id="CREATE_TABLE_AUDIT"
+               runOnChange="true">
+        <createTable tableName="AUDIT">
+            <column autoIncrement="true" name="ID" type="BIGINT">
+                <constraints primaryKey="true" primaryKeyName="PK_AUDIT"/>
+            </column>
+            <column name="TABLE_NAME" type="VARCHAR(255)"/>
+            <column name="ACTOR" type="VARCHAR(255)"/>
+            <column name="ACTION" type="VARCHAR(255)"/>
+            <column name="CREATED_AT" type="TIMESTAMP"/>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

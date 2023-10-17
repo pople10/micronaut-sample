@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.1.xsd">
+
+    <include relativeToChangelogFile="true" file="changelog-user-model.xml"/>
+    <include relativeToChangelogFile="true" file="audit/changelog-audit-model.xml"/>
+    <include relativeToChangelogFile="true" file="changelog-role-model.xml"/>
+    <include relativeToChangelogFile="true" file="changelog-user_role-model.xml"/>
+</databaseChangeLog>
